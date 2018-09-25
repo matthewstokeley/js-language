@@ -4,6 +4,13 @@ var findWordProbability = function(text, word, limit) {
 		limit = 10;
 	}
 
+	/**
+	 * verify the needle is in the provided haystack
+	 * @todo  should probably move to a utility file
+	 * @param  {[type]} needle   [description]
+	 * @param  {[type]} haystack [description]
+	 * @return {[type]}          [description]
+	 */
 	var verifyInArray = function verifyInArray(needle, haystack) {
 	    if (!Array.isArray(haystack)) {
 	        return false;

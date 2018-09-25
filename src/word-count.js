@@ -26,13 +26,11 @@ var wordCount = function(corpus) {
 
 	var loopObjectCount = function(objectCount, callback) {
 		for (var i = 0; i < objectCount.length; i++) {
-			console.log(objectCount[i]);
 			callback.call(this, objectCount[i], i, objectCount);
 		}
 	};
 
 	var ifWordExists = function(wordObject, index, array) {
-		console.log('if word exists');
 		if (isWordRepeated(wordObject, word)) {
 			return true;
 		}

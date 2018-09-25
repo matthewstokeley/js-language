@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!-- meta tags -->
+        <!-- encoding -->
+        <meta http-equiv="content-type" content="text/html"/>
+        <meta charset="utf-8"/>
+
+        <!-- reset viewport for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!-- caching - default is no cache-->
+        <meta http-equiv="Expires" content="Tue, 01 Jan 1995 12:12:12 GMT"/>
+        <meta http-equiv="PRAGMA" content="NO-CACHE"/>
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"/>
+
+        <!-- description -->
+        <meta name="description" content="..."/>
+
+        <!-- title -->
+        <title>
+         Blank Html Template
+        </title>
+
+        <!-- favicon -->
+
+        <!-- styles -->
+        
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                font-size: 22px;
+                font-family: arial, sans-serif;
+            }
+            section {
+                display: block;
+                box-sizing: border-box;
+                padding: 0.3rem;
+                border-right: 1px solid #000;
+                width: 25%;
+                float: left;
+            }
+
+
+            label {
+                font-size: 0.8rem;
+                font-style: italic;
+            }
+
+            input {
+                /** reset input styles */
+                border: 0; margin: 0; padding: 0;
+                display: block;
+            }
+
+
+            input:active, input:hover, input:focus {
+                outline: 0;
+            }
+
+            input + label {
+                clear: both; 
+                display: block;
+            }
+
+            input + label, 
+            input + button {/*
+
+                float: right;
+                display: inline-block;
+                margin-left: 1rem;*/
+            }
+
+
+            /** clear float hack */
+            input + label:after, 
+            input + button:after {
+                display: block;
+                clear: both;
+                content: "";
+            }
+
+            .file-upload {
+                background: #fafafa;
+            }
+
+            button {
+                /** reset button styles */
+                background: none; border: 0; margin: 0; padding: 0;
+                /** button styles */
+                background: #fff;
+                color: #000;
+                text-align: center;
+            }
+
+            input, button {
+                width: 80%;
+                font-size:1.2rem;
+                padding: 0.2rem 1.8rem;
+                margin: 1rem 0 0 10%;
+                box-sizing: border-box;
+                border-bottom: 6px solid #000;
+                text-align: center;
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            input {
+                border-left: 6px solid #000;
+                border-bottom: 6px solid #000;
+            }
+
+
+
+            .inactive {
+                color: #ddd;
+                border-color: #fafafa;
+            }
+
+            textarea {
+                border: 0;
+                font-family: arial;
+                width: 90%;
+                padding: 2rem;
+                height: 900px;
+                box-sizing: border-box;
+            }
+
+            textarea:active, textarea:focus {
+                outline: 0;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <section id="file-upload">
+            <form id="file-upload-form" class="file-upload-form" enctype="multipart/form-data">
+                <input type="file" id="text-file" />
+                <input type="input" disabled class="inactive" id="n" value="2" />
+                <label for="n" style="color: #ddd">enter value for n-gram (defaults to bi-gram)</label>
+            </form>
+
+        </section>
+
+        <section id="demo-controls" class="demo-controls">
+            <button id="clean-text" class="inactive" data-method="clean-text">Clean Text</button>
+            <button id="word-count" data-method="wordCount" class="inactive">Word Count</button>
+            <input id="find-word" placeholder="Enter Word" /><button id="find-word-button" data-method="findIn">Find Word</button>
+            <input id="find-word-probability" placeholder="Enter Word" /><button id="find-word-probability-button" data-method="findWordProbability">Find Word Probability</button>
+            <input id="find-maximum-likelihood" disabled><button id="maximum-likelihood" class="inactive" data-method="maximumLikelihood">Maximum Likelihood</button>
+            <button class="inactive" type="disabled">Naive Bayes</button>
+            <button class="inactive" type="disabled">Simple Interpolation</button>
+            <button class="inactive" type="disabled">Simple Machine Learning</button>
+        </section>
+
+        <section id="text" class="text">
+            <textarea id="text-area"></textarea>
+        </section>
+
+        <section id="result">
+            <textarea id="result-text-area"></textarea>
+        </section>
+
+        <!-- scripts -->
+        <script src="./../js-objects/dist/objects.min.js"></script>
+        <script src="./dist/js/language.min.js"></script>
+
+        <script>
+
+            window.addEventListener('load', () => {
+                var textFile = document.getElementById('text-file');
+                textFile.addEventListener('change', (input) => {
+                    var reader = new FileReader()
+                    var textArea = document.getElementById('text-area');
+                    reader.addEventListener('load', function() {
+                        textArea.value = reader.result;
+                        registerButtons();
+
+                    }.bind(this));
+                   // console.log(input.target.files[0]);
+                    console.log(reader.readAsBinaryString(input.target.files[0]));
+                });
+            })
+
+
+            var registerButtons = function() {
+                var buttons = document.getElementsByTagName('button');
+
+                for (var i = 0; i < buttons.length; i++) {
+                        
+                    buttons[i].addEventListener('click', (button) => {
+                        var method = button.target.dataset.method;
+                        if (!method) {
+                            return;
+                        }
+
+                        var txt = a.makeCorpus(document.getElementById('text-area').value);
+                        var result = '';
+
+                        // dumb switch
+                        if (method == 'findIn') {
+                            var findInResult = a[method](document.getElementById('find-word').value, txt); 
+                            if (!findInResult) {
+                                result = "Word Not Found"
+                                return;
+                            }
+                            result = 'The word ' + document.getElementById('find-word').value + ' is in the document.';
+                        }
+
+                        if (method == 'wordCount') {
+                            console.log('word count clicked');
+                            console.log(a[method](txt));
+                        }
+
+                        if (method == 'findWordProbability') {
+                            // optional third parameter is for a limit - defaults to ten results
+                            findWordProbabilityResult = a[method](document.getElementById('text-area').value, document.getElementById('find-word-probability').value);
+
+
+                            var result = findWordProbabilityResult.map(function(r) {
+                                return "word: " + r.word + " probability: " + r.probability + " ";
+                            }).reduce(function(next, current) {
+                                return next + current;
+                            });
+
+                        }
+
+                        document.getElementById('result-text-area').value = result;
+
+
+                    });
+                    
+                }
+            }
+
+
+
+        </script>
+
+    </body>
+
