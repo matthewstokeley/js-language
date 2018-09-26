@@ -6,12 +6,12 @@ methods for language
 current
 - open source
 - modules
-	- word frequency
 	- maximum probability
 	- text cleaning
 		- punctuation, spaces, alphanumeric characters, lower case
 
 future
+- word frequency
 - suffix/prefix highlighter
 - phoneme parsing
 - very basic machine learning classifier
