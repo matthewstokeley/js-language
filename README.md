@@ -20,6 +20,5 @@ future
 - add ngram parameter to makeCorpus function
 - add ability to create a corpus of multiple texts (i think this is also already done)
 - add comments
-- change html format so it doesn't look like 4columns
-
+s
 	- a lot or at least a couple of these algorithms are completed, i just need to find them
