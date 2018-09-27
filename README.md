@@ -20,5 +20,9 @@ future
 - add ngram parameter to makeCorpus function
 - add ability to create a corpus of multiple texts (i think this is also already done)
 - add comments
-s
-	- a lot or at least a couple of these algorithms are completed, i just need to find them
+- redesign 
+	- remove some of the margins and thick borders 
+	- try serif 
+	- going for a kind of maximalist nytimes look
+
+- i've already written a lot or at least a couple of these algorithms, i just need to find them
