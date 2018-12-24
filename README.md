@@ -1,18 +1,20 @@
 ## language
 methods for language
 
-[view demo](https://matthewstokeley.github.io/language)
+[view demo](https://matthewstokeley.github.io/js-language)
 
 ### use
-predictive text, poetic oracle, etc
+predictive text, etc
 
 ### credits
-the statistical methods are from a NLP class provided by coursera.  
+the statistical methods are from  
+a NLP class provided by Stanford / Coursera. 
 
 ### current modules
 - ngram maximum probability
 - clean-text
-- a couple of helper methods for working with strings in javascript
+- a couple of helper methods for working  
+with strings in javascript.
 
 ### API documentation
 coming soon
