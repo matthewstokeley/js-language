@@ -3,12 +3,10 @@ methods for language
 
 [view demo](https://matthewstokeley.github.io/js-language)
 
-### use
-predictive text, etc
 
 ### credits
 the statistical methods are from  
-a NLP class provided by Stanford / Coursera. 
+a NLP class provided by Stanford. 
 
 ### current modules
 - ngram maximum probability
@@ -26,4 +24,4 @@ coming soon
 - very basic machine learning classifier
 - naive bayes
 - add ngram parameter to makeCorpus function
-- add ability to create a corpus of multiple texts (i think this is also already done)
+- add ability to create a corpus of multiple texts
