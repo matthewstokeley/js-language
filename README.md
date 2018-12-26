@@ -6,7 +6,7 @@ methods for language
 
 ### credits
 the statistical methods are from  
-a NLP class provided by Stanford. 
+a NLP class provided by Columbia / Coursera.
 
 ### current modules
 - ngram maximum probability
