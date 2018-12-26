@@ -6,11 +6,9 @@ var wordCount = function(corpus) {
 
 	function isWordRepeated(wordObject, word) {
 
-		if (wordObject.word === word) {
-			return true;
-		}
-
-		return false;
+		return wordObject.word !== word
+		    ? false
+		    : true
 	}
 
 	function updateCount(value, index) {
@@ -31,14 +29,12 @@ var wordCount = function(corpus) {
 	};
 
 	var ifWordExists = function(wordObject, index, array) {
-		if (isWordRepeated(wordObject, word)) {
-			return true;
-		}
-		return false;
+		return !isWordRepeated(wordObject, word)
+		    ? false
+		    : true
 	};
 
 	var checkIfWordExists = function(objectCount, word) {
-		console.log(loopObjectCount(objectCount, ifWordExists));
 		return loopObjectCount(objectCount, ifWordExists) === true ? true : false;
 	};
 
