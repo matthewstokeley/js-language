@@ -6,7 +6,7 @@ methods for language
 
 ### credits
 the statistical methods are from  
-a NLP class provided by Columbia / Coursera.
+an NLP class provided by Columbia / Coursera.
 
 ### current modules
 - bi-gram maximum probability
