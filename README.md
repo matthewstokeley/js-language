@@ -9,7 +9,7 @@ the statistical methods are from
 a NLP class provided by Columbia / Coursera.
 
 ### current modules
-- ngram maximum probability
+- bi-gram maximum probability
 - clean-text
 - a couple of helper methods for working  
 with strings in javascript.
