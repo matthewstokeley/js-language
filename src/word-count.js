@@ -1,3 +1,5 @@
+// `Set` deprecates a lot of this. @todo refactor
+
 var wordCount = function(corpus) {
 
 	if (!Array.isArray(corpus)) {
