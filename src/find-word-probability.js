@@ -27,18 +27,22 @@ var findWordProbability = function(text, word, limit) {
 
 	function sort(arr) {
 		function loop(array) {
-			for (var i = 0; i < array.length - 1; i++) {
-				if (array[i].probability < array[i + 1].probability) {
-					var current = array[i];
-					var next = array[i + 1];
-
-					array[i] = next;
-					array[i + 1] = current;
-					
-					loop(array);				
+			//for (var i = 0; i < array.length - 1; i++) {
+			let var = recursiveSortFn(value, i, array) => {
+				if (array[i].probability >= array[i + 1].probability) {
+				    return array
 				}
+				
+				var current = array[i];
+				var next = array[i + 1];
+
+			        array[i] = next;
+		                array[i + 1] = current;
+				return loop(array);				
+			    }
 			}
-			return array;
+		
+			return array.map(recursiveSortFn);
 		}
 
 		return loop.call(this, arr);
@@ -129,9 +133,5 @@ var findWordProbability = function(text, word, limit) {
 // 	return result.nextWordCount / result.previousWordCount;
 // };
 
-
-if (!a || a === undefined) {
-	var a = {};
-}
 
 a.findWordProbability = findWordProbability;
