@@ -7,9 +7,9 @@ var findWordProbability = function(text, word, limit) {
 	/**
 	 * verify the needle is in the provided haystack
 	 * @todo  should probably move to a utility file
-	 * @param  {[type]} needle   [description]
-	 * @param  {[type]} haystack [description]
-	 * @return {[type]}          [description]
+	 * @param  {String}     needle   [description]
+	 * @param  {Array}      haystack [description]
+	 * @return {Boolean}             [description]
 	 */
 	var verifyInArray = function verifyInArray(needle, haystack) {
 	    if (!Array.isArray(haystack)) {
@@ -25,35 +25,38 @@ var findWordProbability = function(text, word, limit) {
 	    return false;
 	};
 
+	/**
+	 * bubble sort
+	 * @param  {Array} 
+	 * @return {Array}
+	 */
 	function sort(arr) {
+
 		function loop(array) {
 			for (var i = 0; i < array.length - 1; i++) {
 				if (array[i].probability < array[i + 1].probability) {
 					var current = array[i];
 					var next = array[i + 1];
-
 					array[i] = next;
 					array[i + 1] = current;
-					
 					loop(array);				
 				}
 			}
 			return array;
 		}
-
 		return loop.call(this, arr);
 	}
 
 	function loopCorpus(corpusWord, index, array) {
 		// if corpus word follows word
-
-		if (word === array[index - 1]) {
+		if (word !== array[index - 1]) {
+			return false;
+		// @todo review this conditional
+		} elseif (word === array[index - 1]) {
 			return {
 				probability: a.maximumLikelihood(text, word, corpusWord),
 				word: corpusWord
-			};
-		} else {
-			return false;
+			}
 		}
 	}
 
@@ -82,7 +85,16 @@ var findWordProbability = function(text, word, limit) {
 		return true;
 	}
 	
-	return  sort(a.makeCorpus(text).map(loopCorpus).filter(filterResults)).slice(0, limit);
+	// @todo refactor brittle one-liner
+
+	let corpus = a.makeCorpus(text)
+	let wordMap = corpus.map(loopCorpus);
+	let filteredArr = wordMap.filter(filterResults);
+	let sortedArr = sort(filteredArr);
+	let limitedArr = sortedArr.slice(0, limit);
+	return limitedArr;
+
+	// return sort(a.makeCorpus(text).map(loopCorpus).filter(filterResults)).slice(0, limit);
 
 };
 
