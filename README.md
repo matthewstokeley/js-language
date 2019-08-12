@@ -24,4 +24,3 @@ coming soon
 - very basic machine learning classifier
 - naive bayes
 - add ngram parameter to makeCorpus function
-- add ability to create a corpus of multiple texts
