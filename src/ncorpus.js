@@ -6,7 +6,7 @@ var makeNCorpus = function makeNCorpus(corpus, n) {
 
     var nCorpus = [];
 
-    // @todo hack
+    // @todo implement a more complete queue
     nCorpus.push(corpus.slice(0, n));
 
     for (var i = 0; i < corpus.length; i++) {
