@@ -18,6 +18,7 @@ with strings in javascript.
 coming soon
 
 ### wishlist
+- Lemmas and stemming
 - word frequency
 - suffix/prefix highlighter
 - phoneme parsing
